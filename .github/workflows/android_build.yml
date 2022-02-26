@@ -45,8 +45,11 @@ jobs:
           name: app-production-release
           path: app/build/outputs/apk/production/release/app-production-release-unsigned.apk
 
-      - name: Build with Gradle
+      - name: Build staging
         run: ./gradlew assembleStagingRelease
+
+      - name: List
+        run: ls app/build/outputs/apk
 
       - name: Upload staging APK
         uses: actions/upload-artifact@v2
@@ -54,14 +57,17 @@ jobs:
             name: app-staging-release
             path: app/build/outputs/apk/staging/release/app-staging-release-unsigned.apk
 
-      - name: Build with Gradle
+      - name: Build dev
         run: ./gradlew assembleDevRelease
+
+      - name: List
+        run: ls app/build/outputs/apk
 
       - name: Upload dev APK
         uses: actions/upload-artifact@v2
         with:
             name: app-dev-release
-            path: app/build/outputs/apk/dev/release/app-staging-release-unsigned.apk
+            path: app/build/outputs/apk/dev/release/app-dev-release-unsigned.apk
 
 
       
