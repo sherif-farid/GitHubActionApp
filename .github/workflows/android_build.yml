@@ -32,30 +32,20 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: list 1
-        run:  ls /data
-      - name: list 2
-        run:  ls /home
-      - name: list 3
-        run:  ls /opt
-      - name: list 4
-        run:  ls /root
-      - name: list 5
-        run:  ls /var
-      - name: list 6
-        run:  ls /etc
+     - name: Create Path
+       run: mkdir -p all-apks
 
+     - name: List Paths
+       run: ls /
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
-      - name: list after
-        run: sudo find / -name "*.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: apk
-          path: app/build/outputs/apk/production/debug/app-production-release-unsigned.apk
+          path: all-apks/app-production-release-unsigned.apk
       
  
 
