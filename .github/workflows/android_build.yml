@@ -33,7 +33,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Create Path
-        run: sudo mkdir -p /all-apks
+        run: sudo mkdir -p /all-apks/test.text
 
       - name: List Paths
         run: ls /
@@ -41,11 +41,14 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
 
+      - name: List Paths after
+        run: ls /all-apks
+
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: apk
-          path: all-apks/app-production-release-unsigned.apk
+          path: all-apks/test.text
       
  
 
