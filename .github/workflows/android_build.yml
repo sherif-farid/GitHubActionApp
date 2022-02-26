@@ -43,6 +43,8 @@ jobs:
 
       - name: List Paths after
         run: ls /all-apks
+      - name: List Paths after
+        run: ls /app/build/
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
