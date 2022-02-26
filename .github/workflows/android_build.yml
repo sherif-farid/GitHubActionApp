@@ -33,11 +33,11 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: list before
-      run: ls /
+      run: find / -name "*.apk"
     - name: Build with Gradle
       run: ./gradlew assembleProductionRelease
     - name: list after
-      run: ls /
+      run: find / -name "*.apk"
       
     - name: Upload APK
       uses: actions/upload-artifact@v2
