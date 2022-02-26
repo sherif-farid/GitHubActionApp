@@ -32,11 +32,11 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-     - name: Create Path
-       run: mkdir -p all-apks
+      - name: Create Path
+        run: mkdir -p all-apks
 
-     - name: List Paths
-       run: ls /
+      - name: List Paths
+        run: ls /
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
