@@ -37,13 +37,33 @@ jobs:
         run: ./gradlew assembleProductionRelease
 
       - name: List
-        run: ls app/build/outputs/apk/production
+        run: ls app/build/outputs/apk
 
-      - name: Upload APK
+      - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
           name: app-production-release
           path: app/build/outputs/apk/production/release/app-production-release-unsigned.apk
+
+      - name: Build with Gradle
+        run: ./gradlew assembleStagingRelease
+
+      - name: Upload staging APK
+        uses: actions/upload-artifact@v2
+        with:
+            name: app-staging-release
+            path: app/build/outputs/apk/staging/release/app-staging-release-unsigned.apk
+
+      - name: Build with Gradle
+        run: ./gradlew assembleDevRelease
+
+      - name: Upload dev APK
+        uses: actions/upload-artifact@v2
+        with:
+            name: app-dev-release
+            path: app/build/outputs/apk/dev/release/app-staging-release-unsigned.apk
+
+
       
  
 
