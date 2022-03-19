@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-production-release
-          path: app/build/outputs/apk/production/release/app-production-release-unsigned.apk
+          path: app/build/outputs/apk/production/release/app-production-release.apk
 
       - name: Build staging
         run: ./gradlew assembleStagingRelease
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: app-staging-release
-            path: app/build/outputs/apk/staging/release/app-staging-release-unsigned.apk
+            path: app/build/outputs/apk/staging/release/app-staging-release.apk
 
       - name: Build dev
         run: ./gradlew assembleDevRelease
@@ -70,7 +70,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: app-dev-release
-            path: app/build/outputs/apk/dev/release/app-dev-release-unsigned.apk
+            path: app/build/outputs/apk/dev/release/app-dev-release.apk
 
 
       
