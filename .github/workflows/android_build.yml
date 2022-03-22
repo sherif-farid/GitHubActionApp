@@ -36,10 +36,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: setting date
-        run: echo "TIME_NOW=$('%Y-%m-%d-%H-%M-%S')"
+        run: echo "TIME_NOW=$(date+'%Y-%m-%d-%H-%M-%S')"
 
       - name: print date
-        run: echo "$('%Y-%m-%d-%H-%M-%S')"
+        run: echo "$(date+'%Y-%m-%d-%H-%M-%S')"
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
