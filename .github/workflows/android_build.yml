@@ -33,11 +33,15 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: print date
+        run: echo "NOW::$(date +'%Y-%m-%d-T%H-%M-%S')" >> $GITHUB_ENV
+
+      - name: Echo current date
+        run: echo $NOW
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
 
-      - name: print date
-        run: echo "date $(date +'%Y-%m-%d')"
+
 
 
 #      - name: Upload to server
@@ -46,7 +50,7 @@ jobs:
       - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-production-release
+          name: app-production-release$NOW
           path: app/build/outputs/apk/production/release/app-production-release.apk
 
 
