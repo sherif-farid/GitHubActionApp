@@ -36,10 +36,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: setting date
-        run: echo "TIME_NOW=$(date +'%Y-%m-%d-%HH-%M-%S')" >> $GITHUB_ENV
+        run: echo "TIME_NOW=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
 
       - name: print date
-        run: echo "time now is $TIME_NOW ${{env.TIME_NOW}} "
+        run: echo "time now is $TIME_NOW"
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
