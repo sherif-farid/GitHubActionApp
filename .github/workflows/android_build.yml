@@ -18,6 +18,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      TIME_NOW: "$(date +'%Y-%m-%d-%H-%M-%S')"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,23 +36,18 @@ jobs:
         run: chmod +x gradlew
 
       - name: print date
-        run: echo "NOW::$(date +'%Y-%m-%d-%H-%M-%S')"
+        run: echo "$TIME_NOW"
 
-      - name: Echo current date
-        run: echo $NOW
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
 
-
-
-
 #      - name: Upload to server
-#        run: curl --request POST "https://server-url" --form file=@"app/build/outputs/apk/production/release/app-production-release-unsigned.apk"
+#        run: curl --request POST "https://server-url" --form file=@"app/build/outputs/apk/production/release/app-production-release.apk"
 
       - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-production-release$NOW
+          name: app-production-release$TIME_NOW
           path: app/build/outputs/apk/production/release/app-production-release.apk
 
 
