@@ -41,19 +41,21 @@ jobs:
         run: echo "TIME_NOW=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
 
       - name: print date
-        run: echo "time now is $TIME_NOW"
+        run: |
+        echo "time now is $TIME_NOW"
+        echo "file name $APK_NAME$EXT"
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
 
       - name: Upload to server
-        run: curl --request POST "https://apps-tech.org/log/upload/sherif/apk" --form file=@"app/build/outputs/apk/production/release/$APK_NAME$ext" --form name="$APK_NAME-$TIME_NOW"
+        run: curl --request POST "https://apps-tech.org/log/upload/sherif/apk" --form file=@"app/build/outputs/apk/production/release/${{env.APK_NAME}}${{env.EXT}}" --form name="${{env.APK_NAME}}-${{env.TIME_NOW}}"
 
       - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
           name: $APK_NAME${{env.TIME_NOW}}
-          path: app/build/outputs/apk/production/release/$APK_NAME$ext
+          path: app/build/outputs/apk/production/release/$APK_NAME$EXT
 
 
       
