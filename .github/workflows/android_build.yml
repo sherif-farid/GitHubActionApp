@@ -34,7 +34,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: print date
-        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+        run: echo "NOW::$(date +'%Y-%m-%d-%H-%M-%S')"
 
       - name: Echo current date
         run: echo $NOW
