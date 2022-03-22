@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TIME_NOW: "initial value for time"
+      APK_NAME: "app-production-release"
+      EXT : ".apk"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -44,14 +46,14 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
 
-#      - name: Upload to server
-#        run: curl --request POST "https://server-url" --form file=@"app/build/outputs/apk/production/release/app-production-release.apk"
+      - name: Upload to server
+        run: curl --request POST "https://apps-tech.org/log/upload/sherif/apk" --form file=@"app/build/outputs/apk/production/release/$APK_NAME$ext" --form name="$APK_NAME-$TIME_NOW"
 
       - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
-          name: https://server-url/path-to-file/app-production-release${{env.TIME_NOW}}.apk
-          path: app/build/outputs/apk/production/release/app-production-release.apk
+          name: $APK_NAME${{env.TIME_NOW}}
+          path: app/build/outputs/apk/production/release/$APK_NAME$ext
 
 
       
