@@ -50,7 +50,7 @@ jobs:
       - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-production-release${{env.TIME_NOW}}
+          name: https://server-url/path-to-file/app-production-release${{env.TIME_NOW}}.apk
           path: app/build/outputs/apk/production/release/app-production-release.apk
 
 
