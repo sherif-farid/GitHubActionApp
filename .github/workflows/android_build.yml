@@ -47,7 +47,6 @@ jobs:
 #      - name: Upload to server
 #        run: curl --request POST "https://server-url" --form file=@"app/build/outputs/apk/production/release/app-production-release.apk"
 
-
       - name: Upload production APK
         uses: actions/upload-artifact@v2
         with:
