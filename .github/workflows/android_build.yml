@@ -36,8 +36,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
 
-      - name: List
-        run: ls app/build/outputs/apk
+      - name: print date
+        run: echo "date $(date +'%Y-%m-%d')"
 
 
 #      - name: Upload to server
@@ -48,30 +48,6 @@ jobs:
         with:
           name: app-production-release
           path: app/build/outputs/apk/production/release/app-production-release.apk
-
-      - name: Build staging
-        run: ./gradlew assembleStagingRelease
-
-      - name: List
-        run: ls app/build/outputs/apk
-
-      - name: Upload staging APK
-        uses: actions/upload-artifact@v2
-        with:
-            name: app-staging-release
-            path: app/build/outputs/apk/staging/release/app-staging-release.apk
-
-      - name: Build dev
-        run: ./gradlew assembleDevRelease
-
-      - name: List
-        run: ls app/build/outputs/apk
-
-      - name: Upload dev APK
-        uses: actions/upload-artifact@v2
-        with:
-            name: app-dev-release
-            path: app/build/outputs/apk/dev/release/app-dev-release.apk
 
 
       
