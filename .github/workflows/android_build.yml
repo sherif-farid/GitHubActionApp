@@ -19,7 +19,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      TIME_NOW: ${{'%Y-%m-%d-%H-%M-%S'}}
+      TIME_NOW: ''
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,8 +35,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: setting date
+        run: echo "TIME_NOW=$('%Y-%m-%d-%H-%M-%S')"
+
       - name: print date
-        run: echo "$TIME_NOW"
+        run: echo "$('%Y-%m-%d-%H-%M-%S')"
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
