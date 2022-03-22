@@ -19,7 +19,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      TIME_NOW: ${{(date +'%Y-%m-%d-%HH-%M-%S')}}
+      TIME_NOW: "initial value for time"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -36,10 +36,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: setting date
-        run: echo "TIME_NOW=$(date +'%Y-%m-%d-%HH-%M-%S')"
+        run: echo "TIME_NOW=$(date +'%Y-%m-%d-%HH-%M-%S')" >> $GITHUB_ENV
 
       - name: print date
-        run: echo "$TIME_NOW"
+        run: echo "time now is $TIME_NOW ${{env.TIME_NOW}} "
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
