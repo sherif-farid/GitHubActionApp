@@ -15,6 +15,5 @@ class MainActivity : AppCompatActivity() {
         val url =getString(R.string.base_url)
         val buildType = com.example.githubactionapp.BuildConfig.BUILD_TYPE
         binding?.envUrl?.text = "buildTypeTask1 $buildType \n\nenvUrl $url"
-
     }
 }
