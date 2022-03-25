@@ -2,8 +2,22 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
-
+//key-store-pass-12345678-alias-key0.jks
 android {
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir\\key-store-pass-12345678-alias-key0.jks")
+            storePassword '12345678'
+            keyPassword '12345678'
+            keyAlias 'key0'
+        }
+        productionSigning {
+            storeFile file("$rootDir\\key-store-pass-12345678-alias-key0.jks")
+            keyAlias 'key0'
+            storePassword '12345678'
+            keyPassword '12345678'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -12,8 +26,9 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.productionSigning
+
     }
     flavorDimensions "version"
     productFlavors {production {
