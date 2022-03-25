@@ -1,3 +1,0 @@
-*.kt merge=verify
-*.xml merge=verify
-*.gradle merge=verify
