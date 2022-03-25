@@ -14,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
         val url =getString(R.string.base_url)
         val buildType = com.example.githubactionapp.BuildConfig.BUILD_TYPE
-        binding?.envUrl?.text = "buildTypeMaster $buildType \n\nenvUrl $url"
+        binding?.envUrl?.text = "buildTypeMasterBranch $buildType \n\nenvUrl $url"
     }
 }
