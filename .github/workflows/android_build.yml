@@ -63,17 +63,17 @@ jobs:
       - name: Logging github
         run: echo "${{toJSON(github)}}"
 
-#      - name: Build with Gradle
-#        run: ./gradlew assembleProductionRelease
+      - name: Build with Gradle
+        run: ./gradlew assembleProductionRelease
 
-#      - name: Upload to server
-#        run: curl --request POST "https://apps-tech.org/log/upload/sherif/apk" --form file=@"app/build/outputs/apk/production/release/${{env.APK_NAME}}${{env.EXT}}" --form name="${{env.APK_NAME}}-${{env.TIME_NOW}}"
-#
-#      - name: Upload production APK
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: ${{env.APK_NAME}}-${{env.TIME_NOW}}
-#          path: app/build/outputs/apk/production/release/${{env.APK_NAME}}${{env.EXT}}
+      - name: Upload to server
+        run: curl --request POST "https://apps-tech.org/log/upload/sherif/apk" --form file=@"app/build/outputs/apk/production/release/${{env.APK_NAME}}${{env.EXT}}" --form des="${{env.BUILD_DESCRIPTION}}"
+
+      - name: Upload production APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{env.APK_NAME}}-${{env.TIME_NOW}}
+          path: app/build/outputs/apk/production/release/${{env.APK_NAME}}${{env.EXT}}
 
 
       
