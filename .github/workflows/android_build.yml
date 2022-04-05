@@ -47,6 +47,9 @@ jobs:
       - name: print file name
         run: echo "file name $APK_NAME$EXT"
 
+      - name: print commit msg
+        run: echo "${{github.event.commits[0].message}}"
+
       - name: Logging
         run: echo "${{toJSON(github.event)}}"
 
