@@ -49,7 +49,7 @@ jobs:
       - name: print date
         run: echo "time now is $TIME_NOW"
 
-      -name : print descrioption
+      - name : print descrioption
         run : echo "$BUILD_DESCRIPTION"
 
       - name: print file name
