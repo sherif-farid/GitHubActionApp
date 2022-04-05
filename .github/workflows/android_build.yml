@@ -26,7 +26,7 @@ jobs:
       TIME_NOW: "initial value for time"
       APK_NAME: "app-production-release"
       EXT : ".apk"
-      BUILD_DESCRIPTION : ""
+      BUILD_DESCRIPTION : ${{ github.event.inputs.build_description }}
 
     steps:
       - uses: actions/checkout@v2
@@ -43,14 +43,11 @@ jobs:
       - name: setting date
         run: echo "TIME_NOW=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
 
-      - name: setting inputs
-        run: echo "BUILD_DESCRIPTION=${{ github.event.inputs.build_description }} >> $GITHUB_ENV"
-
       - name: print date
         run: echo "time now is $TIME_NOW"
 
       -name : print descrioption
-        run : echo "$BUILD_DESCRIPTION"
+        run : echo "descrioption is $BUILD_DESCRIPTION"
 
       - name: print file name
         run: echo "file name $APK_NAME$EXT"
