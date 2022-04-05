@@ -49,9 +49,11 @@ jobs:
 
       - name: print commit msg
         run: echo "${{github.event.commits[0].message}}"
+      - name: Logging env
+        run: echo "${{toJSON(env)}}"
 
-      - name: Logging
-        run: echo "${{toJSON(github.event)}}"
+      - name: Logging github
+        run: echo "${{toJSON(github)}}"
 
 #      - name: Build with Gradle
 #        run: ./gradlew assembleProductionRelease
