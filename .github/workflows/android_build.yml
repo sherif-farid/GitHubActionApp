@@ -12,8 +12,11 @@ on:
  workflow_dispatch:
    inputs:
      build_description :
-      description: 'build description'
+      description: 'description'
       required: false
+     file_name:
+       description: 'file name'
+       required: false
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
