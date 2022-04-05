@@ -47,6 +47,9 @@ jobs:
       - name: print file name
         run: echo "file name $APK_NAME$EXT"
 
+      - name: print commit msg
+        run: echo "${{ github.event.head_commit.message }}"
+
 
       - name: Build with Gradle
         run: ./gradlew assembleProductionRelease
