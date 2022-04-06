@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       flavor: ${{ github.event.inputs.choice }}
-      APK_NAME: app-${{env.flavor}}-release.apk
+      APK_NAME: 'app-${{env.flavor}}-release.apk'
       BUILD_DESCRIPTION: ${{ github.event.inputs.build_description }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
