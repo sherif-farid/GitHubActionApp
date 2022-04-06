@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       flavor: ${{ github.event.inputs.choice }}
-      APK_NAME: 'app-${{env.flavor}}-release.apk'
+      APK_NAME: ""
       BUILD_DESCRIPTION: ${{ github.event.inputs.build_description }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -49,6 +49,9 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
+      - name: set apk name
+        run: echo "APK_NAME=app-${{env.flavor}}-release.apk" >> $GITHUB_ENV
 
       - name: Build with Gradle
         run: ./gradlew assembleV9Release
